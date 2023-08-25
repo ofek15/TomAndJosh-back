@@ -5,6 +5,7 @@ const postRoutes = require("./routes/postRoute");
 const mongoose = require("mongoose");
 const cors = require('cors');
 const socket = require("socket.io");
+require('dotenv').config();
 
 
 app.use(cors())
@@ -31,7 +32,7 @@ const server = app.listen(PORT, () => {
 
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: process.env.SERVER,
     methods: ["GET", "POST"],
 },
 })
